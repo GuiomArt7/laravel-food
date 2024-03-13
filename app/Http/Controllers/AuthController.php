@@ -22,14 +22,14 @@ class AuthController extends Controller
 
         //Retornar una respuesta
         return [
-            'token' => $user->crateToken('token')->plainTextToken,
+            'token' => $user->createToken('token')->plainTextToken,
             'user' => $user
         ];
         
     }
 
     public function login(Request $request) {
-        
+        return "desde login";
     }
 
     public function logout(Request $request) {
