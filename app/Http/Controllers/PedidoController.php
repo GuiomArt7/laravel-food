@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pedido;
+use App\Models\PedidoProducto;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,10 +49,10 @@ class PedidoController extends Controller
         }
 
         //Almacenar en la BD
+        PedidoProducto::insert($pedido_producto);
 
         return [
-            'message' =>'relizando pedido' . $pedido->id,
-            'productos' => $request->productos
+            'message' =>'relizando pedido'
         ];
     }
 
