@@ -27,8 +27,17 @@ class PedidoController extends Controller
         $pedido->total = $request->total;
         $pedido->save();
 
+        //Obtener el ID del pedido
+        $id = $pedido->id;
+
+        //Obtener los productos
+
+        //Formatear un arreglo
+
+        //Almacenar en la BD
+
         return [
-            'message' =>'relizando pedido'
+            'message' =>'relizando pedido' . $pedido->id
         ];
     }
 
