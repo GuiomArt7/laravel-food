@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgotadoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PedidoController;
@@ -30,6 +31,7 @@ Route::middleware('auth:sanctum')->group(function() {
 
     Route::apiResource('/categorias', CategoriaController::class);
     Route::apiResource('/productos', ProductoController::class);
+    Route::apiResource('/agotados', AgotadoController::class);
 
 });
 
