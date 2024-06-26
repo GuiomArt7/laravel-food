@@ -23,16 +23,7 @@ class AgotadoController extends Controller
     public function store(Request $request,Agotado $agotado, Producto $producto)
     {
         //
-        $producto = new Producto;
-        $producto->id = $request->id;
-        $producto->disponible = $request->disponible;
-        $producto->save();
-
-        $id = $producto->id;
-
-        return[
-            'message' => 'Producto disponible'
-        ];
+    
     }
 
     /**
@@ -49,11 +40,24 @@ class AgotadoController extends Controller
     public function update(Request $request, Producto $producto)
     {
         //
-        $producto->disponible =1;
+        $estadoActualDisponibilidad = $producto->disponible;
+
+        if ($estadoActualDisponibilidad === 1) {
+            $producto->disponible = 0;
+        } else {
+            $producto->disponible = 1;
+        }
+
         $producto->save();
+
         return [
             'producto' => $producto
         ];
+        /* $producto->disponible =1;
+        $producto->save();
+        return [
+            'producto' => $producto
+        ]; */
     }
 
     /**

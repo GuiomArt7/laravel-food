@@ -37,12 +37,27 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        //
+        $estadoActualDisponibilidad = $producto->disponible;
+
+        if ($estadoActualDisponibilidad === 1) {
+            $producto->disponible = 0;
+        } else {
+            $producto->disponible = 1;
+        }
+
+        $producto->save();
+
+        return [
+            'producto' => $producto
+        ];
+
+
+        /* //
         $producto->disponible =0;
         $producto->save();
         return [
             'producto' => $producto
-        ];
+        ]; */
     }
 
     /**
