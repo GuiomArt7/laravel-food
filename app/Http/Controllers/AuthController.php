@@ -56,4 +56,15 @@ class AuthController extends Controller
             'user' =>null
         ];
     }
+
+    public function getAllUsers() {
+        // Obtener todos los usuarios
+        $users = User::all();
+    
+        // Devolver la lista de usuarios
+        return $users;
+    }
+
+
+   
 }

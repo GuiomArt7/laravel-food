@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::apiResource('/categorias', CategoriaController::class);
     Route::apiResource('/productos', ProductoController::class);
     Route::apiResource('/agotados', AgotadoController::class);
+    Route::apiResource('/usuarios', UsuariosController::class);
 
 });
 
@@ -40,3 +42,5 @@ Route::middleware('auth:sanctum')->group(function() {
 //Autenticación
 Route::post('/registro', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::delete('usuarios/{id}', [AuthController::class, 'destroy']);
+
