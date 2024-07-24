@@ -77,11 +77,18 @@ class PedidoController extends Controller
             $pedido->estado = 1;
         } 
 
+        $estadoActualAtendido = $pedido->atendido;
+
+        if ($estadoActualAtendido === 0) {
+            $pedido->atendido = 1;
+        } 
+        
         $pedido->save();
 
         return [
             'pedido' => $pedido
         ];
+
     }
 
     /**
