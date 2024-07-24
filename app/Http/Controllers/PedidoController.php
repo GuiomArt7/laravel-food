@@ -70,21 +70,12 @@ class PedidoController extends Controller
      */
     public function update(Request $request, Pedido $pedido)
     {
-        //
-       /*  $pedido->estado = 1;
-        $pedido->save();
-
-        return [
-            'pedido' => $pedido
-        ]; */
-
+    
         $estadoActualDisponibilidad = $pedido->estado;
 
-        if ($estadoActualDisponibilidad === 1) {
-            $pedido->estado = 0;
-        } else {
+        if ($estadoActualDisponibilidad === 0) {
             $pedido->estado = 1;
-        }
+        } 
 
         $pedido->save();
 
