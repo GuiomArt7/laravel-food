@@ -30,19 +30,17 @@ Route::middleware('auth:sanctum')->group(function() {
 
     //Almacenar órdenes
     Route::apiResource('/pedidos', PedidoController::class);
-
+    
     Route::apiResource('/categorias', CategoriaController::class);
     Route::apiResource('/ready', ReadyController::class);
     Route::apiResource('/productos', ProductoController::class);
     Route::apiResource('/agotados', AgotadoController::class);
     Route::apiResource('/usuarios', UsuariosController::class);
-
+    Route::post('/registro', [AuthController::class, 'register']);
+    
 });
 
-
-
 //Autenticación
-Route::post('/registro', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::delete('usuarios/{id}', [AuthController::class, 'destroy']);
 
