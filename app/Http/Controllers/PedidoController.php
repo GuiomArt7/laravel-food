@@ -70,26 +70,23 @@ class PedidoController extends Controller
      */
     public function update(Request $request, Pedido $pedido)
     {
-    
-        $estadoActualDisponibilidad = $pedido->estado;
+        $campoActualizar = $request->query('update');
 
-        if ($estadoActualDisponibilidad === 0) {
-            $pedido->estado = 1;
-        } 
+            if ($campoActualizar === 'estado') {
+                $pedido->estado = 1;
+            } elseif ($campoActualizar === 'atendido') {
+                $pedido->atendido = 1;
+            } else {
+                return response()->json(['message' => 'Campo a actualizar no válido'], 400);
+            }
 
-        $estadoActualAtendido = $pedido->atendido;
-
-        if ($estadoActualAtendido === 0) {
-            $pedido->atendido = 1;
-        } 
-        
         $pedido->save();
 
         return [
             'pedido' => $pedido
         ];
-
     }
+
 
     /**
      * Remove the specified resource from storage.
